@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web final</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #04AA6D;
+        }
+        </style>
+    </head>
+
+        <body>
+        
+        <ul>
+          <li><a class="active" href="/">anasayfa</a></li>
+          <li><a href="/iletisim">Iletisim</a></li>
+          <li><a href="https://izu.edu.tr/">IZU WEB SAYFASI</a></li>
+        </ul>
+
+    <form action="/filtrele" method="get">
+        <label>Kosul: </label>
+        <input type="text" name="deyimID">
+        <br>
+        <input type="submit" value="Filtrele">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Deyim ID</th>
+            <th>Deyim ADI</th>
+            <th>deyim aciklama</th>
+        </tr>
+        <% if (deyimData.lenght !==0) { %>
+        <% deyimData.forEach(deyimdata => { %>
+         <tr>
+            <td><%= deyimdata.deyim_id %></td>
+            <td><%= deyimdata.deyim_adi %></td>
+            <td><%= deyimdata.deyim_aciklama %></td>
+         </tr>
+        <% }) %>
+        <% }else {%>
+        <tr>
+            <td colspan="6">Veri Yok</td>
+        </tr>
+        <%}%>
+    </table>
+</body>
+</html>
